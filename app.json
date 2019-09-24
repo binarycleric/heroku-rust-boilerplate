@@ -1,18 +1,9 @@
 {
   "name": "Heroku Rust Boilerplate",
   "description": "Get started with Rust on Heroku",
-  "keywords": [
-    "Rust"
-  ],
   "website": "https://github.com/binarycleric/heroku-rust-boilerplate",
   "repository": "https://github.com/binarycleric/heroku-rust-boilerplate",
   "success_url": "/",
-  "env": {
-    "RUST_INSTALL_DIESEL": {
-      "description": "Install diesel_cli to run migrations in a Dyno",
-      "value": "1"
-    }
-  },
   "formation": {
     "web": {
       "quantity": 1,
