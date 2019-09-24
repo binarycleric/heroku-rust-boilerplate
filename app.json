@@ -4,16 +4,14 @@
   "keywords": [
     "Rust"
   ],
+  "website": "https://github.com/binarycleric/heroku-rust-boilerplate",
   "repository": "https://github.com/binarycleric/heroku-rust-boilerplate",
   "success_url": "/",
-  "stack": "heroku-18",
   "env": {
     "RUST_INSTALL_DIESEL": {
       "description": "Diesel",
-      "value": 1,
-      "required": true
+      "value": 1
     }
-
   },
   "formation": {
     "web": {

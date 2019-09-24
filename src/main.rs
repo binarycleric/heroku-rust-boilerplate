@@ -34,6 +34,7 @@ fn index() -> String {
     let connection = pg();
     let results = rustaceans
         .order(random)
+        .limit(1)
         .load::<Rustacean>(&connection)
         .expect("Error loading rustaceans");
 
