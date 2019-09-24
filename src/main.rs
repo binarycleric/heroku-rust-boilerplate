@@ -12,12 +12,9 @@ use std::env;
 
 pub mod db;
 pub mod schema;
+pub mod models;
 
-#[derive(Queryable)]
-pub struct Rustacean {
-    pub id: i32,
-    pub name: String,
-}
+use models::Rustacean;
 
 no_arg_sql_function!(random, (), "Represents the sql random() function");
 
