@@ -11,8 +11,8 @@ use rocket::Config;
 use std::env;
 
 pub mod db;
-pub mod schema;
 pub mod models;
+pub mod schema;
 
 use models::Rustacean;
 
