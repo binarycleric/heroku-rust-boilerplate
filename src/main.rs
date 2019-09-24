@@ -1,15 +1,17 @@
 #![feature(proc_macro_hygiene, decl_macro)]
 
-#[macro_use] extern crate rocket;
-#[macro_use] extern crate diesel;
+#[macro_use]
+extern crate rocket;
+#[macro_use]
+extern crate diesel;
 extern crate dotenv;
 
 use diesel::prelude::*;
-use rocket::{Config, Route};
+use rocket::Config;
 use std::env;
 
-pub mod schema;
 pub mod db;
+pub mod schema;
 
 #[derive(Queryable)]
 pub struct Rustacean {
@@ -36,14 +38,12 @@ fn index() -> String {
 fn main() {
     let mut config = Config::active().unwrap();
     let routes = routes![index];
-    let port = env::var("PORT").
-        unwrap_or("8000".to_string()).
-        parse().
-        unwrap();
+    let port = env::var("PORT")
+        .unwrap_or("8000".to_string())
+        .parse()
+        .unwrap();
 
     config.set_port(port);
 
-    rocket::custom(config)
-        .mount("/", routes)
-        .launch();
+    rocket::custom(config).mount("/", routes).launch();
 }
