@@ -9,7 +9,7 @@
   "success_url": "/",
   "env": {
     "RUST_INSTALL_DIESEL": {
-      "description": "Diesel",
+      "description": "Install diesel_cli to run migrations in a Dyno",
       "value": "1"
     }
   },

@@ -5,12 +5,11 @@
 extern crate dotenv;
 
 use diesel::prelude::*;
-use diesel::pg::PgConnection;
-
-use dotenv::dotenv;
+use rocket::{Config, Route};
 use std::env;
 
 pub mod schema;
+pub mod db;
 
 #[derive(Queryable)]
 pub struct Rustacean {
@@ -20,18 +19,11 @@ pub struct Rustacean {
 
 no_arg_sql_function!(random, (), "Represents the sql random() function");
 
-pub fn pg() -> PgConnection {
-    dotenv().ok();
-
-    let database_url = env::var("DATABASE_URL").expect("DATABASE_URL must be set");
-    PgConnection::establish(&database_url).expect(&format!("Error connecting to {}", database_url))
-}
-
 #[get("/")]
 fn index() -> String {
     use self::schema::rustaceans::dsl::*;
 
-    let connection = pg();
+    let connection = db::conn();
     let results = rustaceans
         .order(random)
         .limit(1)
@@ -42,5 +34,16 @@ fn index() -> String {
 }
 
 fn main() {
-    rocket::ignite().mount("/", routes![index]).launch();
+    let mut config = Config::active().unwrap();
+    let routes = routes![index];
+    let port = env::var("PORT").
+        unwrap_or("8000".to_string()).
+        parse().
+        unwrap();
+
+    config.set_port(port);
+
+    rocket::custom(config)
+        .mount("/", routes)
+        .launch();
 }
