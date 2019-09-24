@@ -1,0 +1,37 @@
+{
+  "name": "Heroku Rust Boilerplate",
+  "description": "Get started with Rust on Heroku",
+  "keywords": [
+    "Rust"
+  ],
+  "repository": "https://github.com/binarycleric/heroku-rust-boilerplate",
+  "success_url": "/",
+  "stack": "heroku-18",
+  "env": {
+    "RUST_INSTALL_DIESEL": {
+      "description": "Diesel",
+      "value": 1,
+      "required": true
+    }
+
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "free"
+    }
+  },
+  "addons": [
+    {
+      "plan": "heroku-postgresql",
+      "options": {
+        "version": "11"
+      }
+    }
+  ],
+  "buildpacks": [
+    {
+      "url": "emk/heroku-buildpack-rust"
+    }
+  ]
+}
