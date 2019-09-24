@@ -1,1 +1,1 @@
-web: ./target/release/heroku-rust-boilerplate
+web: target/release/heroku-rust-boilerplate
