@@ -1,5 +1,6 @@
 use rocket::{Config, Route};
 use rocket_contrib::serve::StaticFiles;
+use rocket_contrib::templates::Template;
 use std::env;
 
 pub fn start(routes: Vec<Route>) {
@@ -14,5 +15,6 @@ pub fn start(routes: Vec<Route>) {
     rocket::custom(config)
         .mount("/public", StaticFiles::from("./public"))
         .mount("/", routes)
+        .attach(Template::fairing())
         .launch();
 }
