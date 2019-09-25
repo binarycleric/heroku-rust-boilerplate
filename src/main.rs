@@ -14,14 +14,9 @@ use models::*;
 
 #[get("/")]
 fn welcome() -> String {
-
     match Rustacean::get_random_rustacean_name() {
-        Some(name) => {
-            format!("{} says hello from Rust Boilerplate!", name)
-        },
-        None => {
-            format!("Did you forget to run database migrations?")
-        }
+        Some(name) => format!("{} says hello from Rust Boilerplate!", name),
+        None => format!("Did you forget to run database migrations?"),
     }
 }
 

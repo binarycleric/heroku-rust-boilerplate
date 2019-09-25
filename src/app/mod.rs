@@ -1,5 +1,6 @@
-use std::env;
 use rocket::{Config, Route};
+use rocket_contrib::serve::StaticFiles;
+use std::env;
 
 pub fn start(routes: Vec<Route>) {
     let mut config = Config::active().unwrap();
@@ -11,6 +12,7 @@ pub fn start(routes: Vec<Route>) {
     config.set_port(port);
 
     rocket::custom(config)
+        .mount("/public", StaticFiles::from("./public"))
         .mount("/", routes)
         .launch();
 }

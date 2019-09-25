@@ -4,7 +4,7 @@ use diesel::prelude::*;
 use dotenv::dotenv;
 use std::env;
 
-pub fn conn() -> PgConnection {
+fn conn() -> PgConnection {
     dotenv().ok();
 
     let database_url = env::var("DATABASE_URL").expect("DATABASE_URL must be set");
@@ -20,16 +20,16 @@ pub struct Rustacean {
 }
 
 impl Rustacean {
-  pub fn get_random_rustacean_name() -> Option<String> {
-    use super::schema::rustaceans::dsl::*;
+    pub fn get_random_rustacean_name() -> Option<String> {
+        use super::schema::rustaceans::dsl::*;
 
-    let connection = conn();
-    let results = rustaceans
-        .order(random)
-        .limit(1)
-        .load::<Rustacean>(&connection)
-        .expect("Error loading rustaceans");
+        let connection = conn();
+        let results = rustaceans
+            .order(random)
+            .limit(1)
+            .load::<Rustacean>(&connection)
+            .expect("Error loading rustaceans");
 
-    Some(results[0].name.clone())
-  }
+        Some(results[0].name.clone())
+    }
 }
