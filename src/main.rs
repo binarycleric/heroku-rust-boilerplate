@@ -18,14 +18,14 @@ use models::*;
 use rocket_contrib::templates::Template;
 
 #[derive(Serialize, Deserialize)]
-struct WelcomeView {
+struct WelcomeViewContext {
     pub name: String,
 }
 
 #[get("/")]
 fn welcome() -> Template {
     let name = Rustacean::get_random_rustacean_name().unwrap();
-    let view = WelcomeView { name };
+    let view = WelcomeViewContext { name };
 
     Template::render("index", &view)
 }

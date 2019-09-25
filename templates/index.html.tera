@@ -1,1 +1,10 @@
-{{ name }} says hello from Rust Boilerplate!
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Rust Boilerplate</title>
+  </head>
+  <body>
+    {{ name }} says hello from Rust Boilerplate!
+  </body>
+</html>
