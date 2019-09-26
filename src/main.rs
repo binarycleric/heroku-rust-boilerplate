@@ -9,28 +9,14 @@ extern crate rocket_contrib;
 #[macro_use]
 extern crate serde_derive;
 
-mod app;
 mod models;
 mod schema;
-
-use models::*;
-
-use rocket_contrib::templates::Template;
-
-#[derive(Serialize, Deserialize)]
-struct WelcomeViewContext {
-    pub name: String,
-}
-
-#[get("/")]
-fn welcome() -> Template {
-    let name = Rustacean::get_random_rustacean_name().unwrap();
-    let view = WelcomeViewContext { name };
-
-    Template::render("index", &view)
-}
+mod app;
+mod routes;
 
 fn main() {
-    let routes = routes![welcome];
+    let routes = routes![
+        routes::welcome
+    ];
     app::start(routes);
 }
