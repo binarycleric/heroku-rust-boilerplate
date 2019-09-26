@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Rust Boilerplate</title>
-  </head>
-  <body>
-    {{ name }} says hello from Rust Boilerplate!
-  </body>
-</html>
+{% extends "layout" %}
+
+{% block title %}
+{{ title }}
+{% endblock title %}
+
+{% block content %}
+{{ name }} says hello from Rust Boilerplate!
+{% endblock content %}

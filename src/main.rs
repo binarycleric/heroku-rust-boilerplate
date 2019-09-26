@@ -18,5 +18,6 @@ fn main() {
     let routes = routes![
         routes::welcome
     ];
+
     app::start(routes);
 }
