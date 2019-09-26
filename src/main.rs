@@ -9,15 +9,13 @@ extern crate rocket_contrib;
 #[macro_use]
 extern crate serde_derive;
 
-mod models;
-mod schema;
 mod app;
+mod models;
 mod routes;
+mod schema;
 
 fn main() {
-    let routes = routes![
-        routes::welcome
-    ];
+    let routes = routes![routes::welcome];
 
     app::start(routes);
 }

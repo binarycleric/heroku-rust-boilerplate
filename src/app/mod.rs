@@ -1,5 +1,5 @@
-use rocket::{Config, Route};
 use rocket::config::LoggingLevel;
+use rocket::{Config, Route};
 use rocket_contrib::serve::StaticFiles;
 use rocket_contrib::templates::Template;
 use std::env;
