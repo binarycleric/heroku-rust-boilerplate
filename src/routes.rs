@@ -1,4 +1,5 @@
 use super::models::*;
+use rocket_contrib::json::Json;
 use rocket_contrib::templates::Template;
 
 #[derive(Serialize, Deserialize)]
@@ -14,4 +15,10 @@ pub fn welcome() -> Template {
     let view = WelcomeViewContext { title, name };
 
     Template::render("index", &view)
+}
+
+#[get("/random_rustacean.json")]
+pub fn get_random_rustacean() -> Json<Rustacean> {
+    let random_rustacean = Rustacean::get_random_rustacean().unwrap();
+    Json(random_rustacean)
 }

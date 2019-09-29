@@ -6,4 +6,12 @@
 
 {% block content %}
 {{ name }} says hello from Rust Boilerplate!
+
+<h2>Links</h2>
+<ul>
+  <li><a href="random_rustacean.json">Get Random Rustacean (json)</a></li>
+</ul>
+
+<h2>Contribute</h2>
+<a href="https://github.com/binarycleric/heroku-rust-boilerplate">Github</a>
 {% endblock content %}
