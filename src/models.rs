@@ -32,17 +32,4 @@ impl Rustacean {
 
         Some(results[0].clone())
     }
-
-    pub fn get_random_rustacean_name() -> Option<String> {
-        use super::schema::rustaceans::dsl::*;
-
-        let connection = conn();
-        let results = rustaceans
-            .order(random)
-            .limit(1)
-            .load::<Rustacean>(&connection)
-            .expect("Error loading rustaceans");
-
-        Some(results[0].name.clone())
-    }
 }

@@ -11,7 +11,8 @@ struct WelcomeViewContext {
 #[get("/")]
 pub fn welcome() -> Template {
     let title = "Rust Boilerplate".to_string();
-    let name = Rustacean::get_random_rustacean_name().unwrap();
+    let random_rustacean = Rustacean::get_random_rustacean().unwrap();
+    let name = random_rustacean.name;
     let view = WelcomeViewContext { title, name };
 
     Template::render("index", &view)
