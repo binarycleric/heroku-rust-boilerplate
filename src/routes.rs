@@ -8,8 +8,12 @@ struct WelcomeViewContext {
     pub name: String,
 }
 
+pub fn get_routes() -> std::vec::Vec<rocket::Route> {
+    routes![welcome, get_random_rustacean]
+}
+
 #[get("/")]
-pub fn welcome() -> Template {
+fn welcome() -> Template {
     let title = "Rust Boilerplate".to_string();
     let random_rustacean = Rustacean::get_random_rustacean().unwrap();
     let name = random_rustacean.name;
@@ -19,7 +23,7 @@ pub fn welcome() -> Template {
 }
 
 #[get("/random_rustacean.json")]
-pub fn get_random_rustacean() -> Json<Rustacean> {
+fn get_random_rustacean() -> Json<Rustacean> {
     let random_rustacean = Rustacean::get_random_rustacean().unwrap();
     Json(random_rustacean)
 }

@@ -15,7 +15,5 @@ mod routes;
 mod schema;
 
 fn main() {
-    let routes = routes![routes::welcome, routes::get_random_rustacean];
-
-    app::start(routes);
+    app::start();
 }

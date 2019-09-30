@@ -1,10 +1,13 @@
 use rocket::config::LoggingLevel;
-use rocket::{Config, Route};
+use rocket::Config;
 use rocket_contrib::serve::StaticFiles;
 use rocket_contrib::templates::Template;
 use std::env;
+use super::routes;
 
-pub fn start(routes: Vec<Route>) {
+
+pub fn start() {
+    let routes = routes::get_routes();
     let mut config = Config::active().unwrap();
     let port = env::var("PORT")
         .unwrap_or("8000".to_string())
