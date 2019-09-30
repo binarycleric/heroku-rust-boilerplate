@@ -1,12 +1,7 @@
 use super::models::*;
+use super::views::WelcomeView;
 use rocket_contrib::json::Json;
 use rocket_contrib::templates::Template;
-
-#[derive(Serialize, Deserialize)]
-struct WelcomeViewContext {
-    pub title: String,
-    pub name: String,
-}
 
 pub fn get_routes() -> std::vec::Vec<rocket::Route> {
     routes![welcome, get_random_rustacean]
@@ -17,9 +12,9 @@ fn welcome() -> Template {
     let title = "Rust Boilerplate".to_string();
     let random_rustacean = Rustacean::get_random_rustacean().unwrap();
     let name = random_rustacean.name;
-    let view = WelcomeViewContext { title, name };
+    let view = WelcomeView { title, name };
 
-    Template::render("index", &view)
+    Template::render(view.template(), &view)
 }
 
 #[get("/random_rustacean.json")]

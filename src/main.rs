@@ -13,6 +13,7 @@ mod app;
 mod models;
 mod routes;
 mod schema;
+mod views;
 
 fn main() {
     app::start();
