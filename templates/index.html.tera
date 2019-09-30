@@ -5,12 +5,18 @@
 {% endblock title %}
 
 {% block content %}
-{{ name }} says hello from Rust Boilerplate!
+<h1>{{ name }} says hello from Rust Boilerplate!</h1>
 
 <h2>Links</h2>
 <ul>
   <li><a href="random_rustacean.json">Get Random Rustacean (json)</a></li>
 </ul>
+
+<strong>Create a new user via curl</strong>
+<br>
+<code>
+curl -H "Content-Type: application/json" --data "{\"id\": 5, \"name\": \"bob\"}" http://localhost:8000/rustacean
+</code>
 
 <h2>Contribute</h2>
 <a href="https://github.com/binarycleric/heroku-rust-boilerplate">Github</a>
