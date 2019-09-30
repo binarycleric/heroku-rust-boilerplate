@@ -1,10 +1,9 @@
+use super::routes;
 use rocket::config::LoggingLevel;
 use rocket::Config;
 use rocket_contrib::serve::StaticFiles;
 use rocket_contrib::templates::Template;
 use std::env;
-use super::routes;
-
 
 pub fn start() {
     let routes = routes::get_routes();
